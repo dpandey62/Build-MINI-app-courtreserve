@@ -2,7 +2,7 @@
 
 **CourtReserve** is a modern and responsive web application designed to streamline sports club management. Built using the MERN Stack, it provides a full-featured system for booking courts, managing users, tracking payments, and handling administrative tasks efficiently.
 
-🔗 **Live Site:** [https://build-mini-app-courtreserve.vercel.app/courts]
+🔗 **Live Site:** [https://build-mini-app-courtreserve.vercel.app/courts](https://build-mini-app-courtreserve.vercel.app/)
 ---
 
 ## 👤 Admin Credentials
