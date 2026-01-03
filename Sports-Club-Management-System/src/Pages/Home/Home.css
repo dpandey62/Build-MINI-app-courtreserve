@@ -1,0 +1,9 @@
+.home-wrapper {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+section {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
