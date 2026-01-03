@@ -19,7 +19,7 @@ import Login from "./Pages/Login/Login";
 import Register from "./Pages/Register/Register";
 // import DashboardHome from "./Pages/Dashboard/DashboardHome/DashboardHome";
  import DashboardLayout from "./Layouts/DashboardLayout";
- import PublicLayout from "./layouts/PublicLayout";
+ import PublicLayout from "./Layouts/PublicLayout";
  import Dashboards from "./Pages/Dashboards/Dashboard";
  import Profile from "./Pages/Dashboards/Profile";
  import Bookings from "./Pages/Dashboards/Bookings";
