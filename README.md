@@ -14,9 +14,11 @@
 ---
 
 ## 📸 Screenshot
-<img width="1919" height="1045" alt="Screenshot 2026-01-02 194705" src="https://github.com/user-attachments/assets/599d8a2e-2a4c-4dbe-ba39-4059b65b458f" />
 
----
+
+
+<img width="1892" height="1079" alt="Screenshot 2026-01-03 160926" src="https://github.com/user-attachments/assets/42a09aff-eea5-4c6d-bc71-18260261687e" />
+
 
 ## 🚀 Features
 
