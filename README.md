@@ -54,7 +54,7 @@
 ### 🔽 Clone this repository
 
 ```bash
-git clone https://github.com/mdshahariarhafizofficial/sports-club-management-system.git
+
 cd sports-club-management-system
 
 📦 Install dependencies
