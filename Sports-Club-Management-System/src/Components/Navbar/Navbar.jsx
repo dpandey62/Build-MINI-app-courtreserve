@@ -1,8 +1,9 @@
-import React from "react";
+
+import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { FaRegUserCircle, FaUserCircle } from "react-icons/fa";
+import { FaUserCircle } from "react-icons/fa";
 import { TiThMenu } from "react-icons/ti";
-import { MdLogout, MdOutlineDashboard } from "react-icons/md";
+import { MdLogout, MdOutlineDashboard, MdClose } from "react-icons/md";
 import { Tooltip } from "react-tooltip";
 import "react-tooltip/dist/react-tooltip.css";
 import "./Navbar.css";
@@ -11,34 +12,36 @@ import useAuth from "../../Hooks/useAuth";
 
 const Navbar = () => {
   const { handleSignOut = () => {}, user = null } = useAuth() || {};
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   const activeClass = "nav-link active";
   const inactiveClass = "nav-link";
 
-  const menu = (
+  // ✅ MENU AS FUNCTION (IMPORTANT FIX)
+  const menu = (closeMenu) => (
     <>
       <li>
-        <NavLink to="/" className={({ isActive }) => (isActive ? activeClass : inactiveClass)}>
+        <NavLink to="/" className={({ isActive }) => isActive ? activeClass : inactiveClass} onClick={closeMenu}>
           Home
         </NavLink>
       </li>
       <li>
-        <NavLink to="/courts" className={({ isActive }) => (isActive ? activeClass : inactiveClass)}>
+        <NavLink to="/courts" className={({ isActive }) => isActive ? activeClass : inactiveClass} onClick={closeMenu}>
           Courts
         </NavLink>
       </li>
       <li>
-        <NavLink to="/faq" className={({ isActive }) => (isActive ? activeClass : inactiveClass)}>
+        <NavLink to="/faq" className={({ isActive }) => isActive ? activeClass : inactiveClass} onClick={closeMenu}>
           FAQ
         </NavLink>
       </li>
       <li>
-        <NavLink to="/contact-us" className={({ isActive }) => (isActive ? activeClass : inactiveClass)}>
+        <NavLink to="/contact-us" className={({ isActive }) => isActive ? activeClass : inactiveClass} onClick={closeMenu}>
           Contact Us
         </NavLink>
       </li>
       <li>
-        <NavLink to="/support" className={({ isActive }) => (isActive ? activeClass : inactiveClass)}>
+        <NavLink to="/support" className={({ isActive }) => isActive ? activeClass : inactiveClass} onClick={closeMenu}>
           Support
         </NavLink>
       </li>
@@ -48,68 +51,85 @@ const Navbar = () => {
   return (
     <nav className="navbar-container">
       <div className="navbar-content">
-        {/* Left: Logo */}
-        <div className="navbar-left">
+
+        {/* LEFT LOGO (DESKTOP ONLY) */}
+        <div className="navbar-left desktop-only">
           <Link to="/">
             <img src={logo} alt="Logo" className="logo-img" />
           </Link>
         </div>
 
-        {/* Center: Desktop Menu */}
-        <div className="navbar-center">
-          <ul className="nav-menu-list">{menu}</ul>
+        {/* CENTER MENU (DESKTOP ONLY) */}
+        <div className="navbar-center desktop-only">
+          <ul className="nav-menu-list">
+            {menu()}
+          </ul>
         </div>
 
-        {/* Right: Actions */}
+        {/* RIGHT */}
         <div className="navbar-right">
           <Tooltip id="user-tooltip" />
-          
-          {user ? (
-            <div className="user-section">
-              <span className="user-email">{user.email}</span>
-              <div className="dropdown">
-                <div tabIndex={0} role="button" className="avatar-btn">
-                  <div className="avatar-ring">
-                    <img 
-                      src={user.photoURL || "https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png"} 
-                      alt="User" 
-                    />
-                  </div>
-                </div>
-                {/* Dropdown Menu */}
-                <ul tabIndex={0} className="dropdown-menu">
-                  <li className="user-info">
-                    <FaRegUserCircle size={22} className="icon-yellow" />
-                    {user.displayName || "User"}
-                  </li>
-                  <li>
-                    <Link to="/dashboard" className="dropdown-link">
-                      <MdOutlineDashboard size={20} /> Dashboard
-                    </Link>
-                  </li>
-                  <li>
-                    <button onClick={handleSignOut} className="logout-btn-small">
-                      <MdLogout size={20} /> Logout
-                    </button>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          ) : (
-            <Link to="/login" className="login-link">
+
+          {/* LOGIN (DESKTOP ONLY) */}
+          {!user && (
+            <Link to="/login" className="login-link desktop-only">
               <button className="login-btn-main">
-                <FaUserCircle size={24} />
+                <FaUserCircle size={22} />
                 Login
               </button>
             </Link>
           )}
 
-          {/* Mobile Hamburger (Visible only on small screens) */}
-          <div className="mobile-toggle">
-             <TiThMenu size={30} className="icon-yellow" />
+          {/* HAMBURGER (MOBILE ONLY) */}
+          <div
+            className="mobile-toggle mobile-only"
+            onClick={() => setMobileOpen(true)}
+          >
+            <TiThMenu size={30} className="icon-yellow" />
           </div>
         </div>
       </div>
+
+      {/* 🔥 MOBILE FULL MENU */}
+      {mobileOpen && (
+        <div className="mobile-menu">
+          <button className="close-btn" onClick={() => setMobileOpen(false)}>
+            <MdClose size={28} />
+          </button>
+
+          <ul className="mobile-menu-list">
+            {menu(() => setMobileOpen(false))}
+
+            {/* LOGIN (MOBILE MENU ONLY) */}
+            {!user && (
+              <li>
+                <Link
+                  to="/login"
+                  className="mobile-login-btn"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  <FaUserCircle /> Login
+                </Link>
+              </li>
+            )}
+
+            {user && (
+              <>
+                <li>
+                  <Link to="/dashboard" onClick={() => setMobileOpen(false)}>
+                    <MdOutlineDashboard /> Dashboard
+                  </Link>
+                </li>
+                <li>
+                  <button onClick={handleSignOut}>
+                    <MdLogout /> Logout
+                  </button>
+                </li>
+              </>
+            )}
+          </ul>
+        </div>
+      )}
     </nav>
   );
 };
