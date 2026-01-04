@@ -130,3 +130,112 @@
     display: none; /* Hide main links on mobile */
   }
 }
+
+/* ================= MOBILE HAMBURGER ================= */
+.mobile-toggle {
+  display: none;
+  cursor: pointer;
+}
+
+/* ================= MOBILE MENU ================= */
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  background-color: #060606;
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  color: #fccb06;
+  cursor: pointer;
+}
+
+.mobile-menu-list {
+  list-style: none;
+  margin-top: 120px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+}
+
+.mobile-menu-list a,
+.mobile-menu-list button {
+  color: white;
+  background: none;
+  border: none;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.mobile-login-btn {
+  display: flex !important;
+  background-color: #fccb06;
+  color: black !important;
+  padding: 12px 26px;
+  font-weight: 700;
+  border-radius: 6px;
+  align-items: center;
+  gap: 8px;
+}
+
+
+/* ================= VISIBILITY CONTROL ================= */
+.desktop-only {
+  display: flex;
+}
+
+.mobile-only {
+  display: none;
+}
+
+/* @media (max-width: 1024px) {
+  .navbar-left,
+  .navbar-center,
+  .login-link,
+  .user-section {
+    display: none;
+  } */
+
+  
+ 
+  
+@media (max-width: 1024px) {
+  /* ❌ menu & login hide */
+  .navbar-center,
+  .login-link,
+  .user-section {
+    display: none;
+  }
+
+  /* ✅ logo & hamburger show */
+  .navbar-left {
+    display: block;
+  }
+
+  .mobile-toggle {
+    display: block;
+  }
+}
+/* 🔥 FORCE MOBILE LOGIN VISIBILITY */
+.mobile-menu .mobile-login-btn {
+  display: flex !important;
+  background-color: #fccb06;
+  color: black !important;
+  padding: 12px 26px;
+  font-weight: 700;
+  border-radius: 6px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}        
