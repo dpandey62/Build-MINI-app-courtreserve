@@ -1,0 +1,241 @@
+/* Container styling */
+.navbar-container {
+  background-color: #060606;
+  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: 15px 0;
+  border-bottom: 1px solid #222;
+}
+
+.navbar-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+}
+
+/* Logo Styling */
+.logo-img {
+  height: 50px;
+  width: auto;
+}
+
+/* FIX: Forces the menu to be horizontal and removes dots */
+.nav-menu-list {
+  display: flex;
+  list-style: none !important;
+  gap: 30px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover, .nav-link.active {
+  color: #fccb06; /* Yellow from your screenshot */
+  border-bottom: 2px solid #fccb06;
+  padding-bottom: 5px;
+}
+
+/* Right Section Actions */
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.user-email {
+  color: #aaa;
+  font-size: 0.85rem;
+}
+
+/* Main Login Button (Yellow Pill) */
+.login-btn-main {
+  background-color: #fccb06;
+  color: black;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 8px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+/* Avatar styling */
+.avatar-ring {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid #fccb06;
+}
+
+.avatar-ring img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Dropdown styling (Simple version) */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  right: 0;
+  background-color: #1a1a1a;
+  min-width: 200px;
+  box-shadow: 0px 8px 16px rgba(0,0,0,0.5);
+  border-radius: 8px;
+  padding: 15px;
+  list-style: none;
+  z-index: 1001;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-link, .user-info {
+  color: white;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0;
+}
+
+.icon-yellow {
+  color: #fccb06;
+}
+
+/* Responsive Hide/Show */
+@media (max-width: 1024px) {
+  .navbar-center {
+    display: none; /* Hide main links on mobile */
+  }
+}
+
+/* ================= MOBILE HAMBURGER ================= */
+.mobile-toggle {
+  display: none;
+  cursor: pointer;
+}
+
+/* ================= MOBILE MENU ================= */
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  background-color: #060606;
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  color: #fccb06;
+  cursor: pointer;
+}
+
+.mobile-menu-list {
+  list-style: none;
+  margin-top: 120px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+}
+
+.mobile-menu-list a,
+.mobile-menu-list button {
+  color: white;
+  background: none;
+  border: none;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.mobile-login-btn {
+  display: flex !important;
+  background-color: #fccb06;
+  color: black !important;
+  padding: 12px 26px;
+  font-weight: 700;
+  border-radius: 6px;
+  align-items: center;
+  gap: 8px;
+}
+
+
+/* ================= VISIBILITY CONTROL ================= */
+.desktop-only {
+  display: flex;
+}
+
+.mobile-only {
+  display: none;
+}
+
+/* @media (max-width: 1024px) {
+  .navbar-left,
+  .navbar-center,
+  .login-link,
+  .user-section {
+    display: none;
+  } */
+
+  
+ 
+  
+@media (max-width: 1024px) {
+  /* ❌ menu & login hide */
+  .navbar-center,
+  .login-link,
+  .user-section {
+    display: none;
+  }
+
+  /* ✅ logo & hamburger show */
+  .navbar-left {
+    display: block;
+  }
+
+  .mobile-toggle {
+    display: block;
+  }
+}
+/* 🔥 FORCE MOBILE LOGIN VISIBILITY */
+.mobile-menu .mobile-login-btn {
+  display: flex !important;
+  background-color: #fccb06;
+  color: black !important;
+  padding: 12px 26px;
+  font-weight: 700;
+  border-radius: 6px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}        
